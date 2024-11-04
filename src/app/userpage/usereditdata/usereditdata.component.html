@@ -1,0 +1,37 @@
+<section class="user-edit-section">
+    <div class="main-wrapper">
+        <span class="simple_text-title">Account Settings</span>
+        <form class="form-container" [formGroup]="userGetData">
+            <div class="form-group">
+                <span class="label">First name</span>
+                <input type="text" class="input-filed" formControlName="Name" name="name" autocomplete="new-name">
+                <span class="alert-text" *ngIf="userGetData.controls['Name'].touched && userGetData.controls['Name'].errors?.['required']">Name is required</span>
+            </div>
+            <div class="form-group">
+                <span class="label">Last name</span>
+                <input type="text" class="input-filed" formControlName="Surname" name="surname" autocomplete="new-surname">
+                <span class="alert-text" *ngIf="userGetData.controls['Surname'].touched && userGetData.controls['Surname'].errors?.['required']">Surname is required</span>
+            </div>
+            <div class="form-group">
+                <span class="label">Username</span> 
+                <input type="text" class="input-filed" formControlName="Username" name="username" autocomplete="new-username">
+                <span class="alert-text" *ngIf="userGetData.controls['Username'].touched && userGetData.controls['Username'].errors?.['required']">Username is required</span>
+            </div>
+            <div class="form-group">
+                <span class="label">E-mail</span>
+                <input type="email" class="input-filed" formControlName="Email" name="email" autocomplete="new-email">
+                <span class="alert-text" *ngIf="userGetData.controls['Email'].touched && userGetData.controls['Email'].errors?.['required']">Email is required</span>
+                <span class="alert-text" *ngIf="userGetData.controls['Email'].touched && userGetData.controls['Email'].errors?.['email']">Use correct Email</span>
+            </div>
+            <div class="form-group">
+                <span class="label">Phone number</span>
+                <input type="tel" class="input-filed" formControlName="PhoneNumber" name="PhoneNumber" autocomplete="new-PhoneNumber">
+                <span class="alert-text" *ngIf="userGetData.controls['PhoneNumber'].touched && userGetData.controls['PhoneNumber'].errors?.['required']">Phone Number is required</span>
+            </div>
+        </form>
+        <button class="edit-button" *ngIf="this.isDisabled" (click)="turnOnEditData()">Edit</button>
+        <button class="edit-button" *ngIf="!this.isDisabled" (click)="editData()">Save</button>
+    </div>
+</section>
+
+<button (click)="logOut()" class="log-out">Log Out</button>

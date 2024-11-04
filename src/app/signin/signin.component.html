@@ -1,0 +1,36 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<section class="w-screen h-screen flex">
+    <div class="w-1/2 h-dvh md:h-screen bg-slate-300"></div>
+    <div class="relative w-1/2 h-dvh md:h-scree flex flex-col items-center justify-center gap-y-3">
+        <form class="w-1/2 h-1/2 flex flex-col gap-y-6 text-white" [formGroup]="singInForm">
+            <h1 class="login-welcome">Welcome Back!</h1>
+            <h1 class="relative top-4 font-medium text-2xl">Log In</h1>
+            <div [ngClass]="{ 'border-red-500': EmailError }" class="relative border-2 h-11 flex items-center rounded-lg pr-3">
+                <div [ngClass]="{ 'border-red-500': EmailError }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2">
+                    <i *ngIf="!EmailError" 
+                       class="fa-solid fa-envelope"></i>
+                    <i *ngIf="EmailError"
+                       class="fa-solid fa-exclamation text-red-500 text-lg"></i>
+                </div>
+                <input formControlName="Email" type="email" class="w-full p-1 bg-transparent outline-none" name="email" placeholder="example@sample.com">
+            </div>
+            <div [ngClass]="{ 'border-red-500': passwordError }" class="relative border-2 h-11 flex items-center rounded-lg pr-3">
+                <div [ngClass]="{ 'border-red-500': passwordError }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2">
+                    <i *ngIf="!passwordError" 
+                       class="fa-solid fa-lock"></i>
+                    <i *ngIf="passwordError" 
+                       class="fa-solid fa-exclamation text-red-500 text-l"></i>
+                </div>                
+                <input formControlName="Password" type="password" class="w-full p-1 bg-transparent outline-none" name="password" placeholder="****">
+                <a href="" class="absolute top-[112%] right-0 text-blue-500 font-semibold hover:underline">Forgot Password?</a>
+            </div>
+            <div class="relative top-3 flex gap-x-4">
+                <button matRipple [matRippleColor]="'#1F293755'" type="submit" class="w-full h-11 font-medium text-lg bg-gray-800 rounded-lg transition duration-300 md:hover:bg-gray-600">Sign Up</button>
+                <button matRipple [matRippleColor]="'#3B82F655'" type="submit" class="w-full h-11 font-medium text-lg bg-blue-800 rounded-lg transition duration-300 md:hover:bg-blue-600">Sign In</button>
+            </div>
+        </form>
+    </div>
+</section>
