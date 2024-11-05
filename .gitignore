@@ -43,3 +43,7 @@ Thumbs.db
 
 # ENV
 src/app/ENV.ts
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

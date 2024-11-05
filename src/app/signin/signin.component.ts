@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatRipple } from '@angular/material/core';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-singin',
@@ -17,21 +18,44 @@ import { MatRipple } from '@angular/material/core';
   styleUrl: './signin.component.scss'
 })
 export class SigninComponent {
-  singInForm: FormGroup;
+  loader: boolean = false;
+  signInForm: FormGroup;
 
-  constructor() {
-    this.singInForm = new FormGroup({
+  constructor(private router: Router, private auth: AuthService) {
+    this.signInForm = new FormGroup({
       Email: new FormControl("", [Validators.required, Validators.email]),
-      Password: new FormControl("", [Validators.required, Validators.minLength(4)])
+      Password: new FormControl("", [Validators.required, Validators.minLength(6)])
     })
   }
 
   get EmailError(): boolean {
-    return !!((this.singInForm.get('Email')?.hasError('required') || this.singInForm.get('Email')?.hasError('email')) && this.singInForm.get('Email')?.touched);
+    return !!((this.signInForm.get('Email')?.hasError('required') || this.signInForm.get('Email')?.hasError('email')) && this.signInForm.get('Email')?.touched);
   }
 
   get passwordError(): boolean {
-    return !!((this.singInForm.get('Password')?.hasError('required') || this.singInForm.get('Password')?.hasError('minlength')) && this.singInForm.get('Password')?.touched);
+    return !!((this.signInForm.get('Password')?.hasError('required') || this.signInForm.get('Password')?.hasError('minlength')) && this.signInForm.get('Password')?.touched);
   }
 
+  signInUser() {
+    if (this.signInForm.invalid) {
+      this.signInForm.markAllAsTouched();
+      return;
+    }
+
+    const { Email, Password } = this.signInForm.value;
+    this.loader = !this.loader;
+
+    this.auth.signIn(Email, Password).then(() => {
+      this.loader = !this.loader;
+      this.router.navigate(["/user"]);
+    }).catch((err) => {
+      console.log(err);
+      this.loader = !this.loader;
+      this.signInForm.markAllAsTouched();
+    })
+  }
+
+  goSignUp() {
+    this.auth.setPosition(true);
+  }
 }

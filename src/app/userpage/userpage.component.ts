@@ -1,26 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { MainservisesService } from '../mainservises.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsereditdataComponent } from './usereditdata/usereditdata.component';
-import { UsernavigationComponent } from './usernavigation/usernavigation.component';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-userpage',
   standalone: true,
-  imports: [UsereditdataComponent, UsernavigationComponent],
+  imports: [],
   templateUrl: './userpage.component.html',
   styleUrl: './userpage.component.scss'
 })
 export class UserpageComponent {
+  constructor(private router: Router, private auth: AuthService) {}
 
-  data: any;
-  
-  public userList: Array<any> = [];
-
-  constructor(private MainservisesService: MainservisesService, private router: Router) {}
-
-  moveHome() {
-    this.router.navigate(['/userpage']);
+  singOutUser() {
+    this.auth.signOut();
+    this.router.navigate(["/"]);
   }
 
 }
