@@ -4,7 +4,7 @@
 
 ### Front-End
 - **Framework**: Angular  
-- **Styling**: Customize with Angular Material or Bootstrap
+- **Styling**: Customize with Angular Material and Tailwind
 
 ### Back-End
 - **Database & Authentication**: Firebase
