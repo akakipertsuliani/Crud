@@ -19,6 +19,8 @@ import { AuthService } from '../service/auth.service';
 })
 export class SigninComponent {
   loader: boolean = false;
+  success: boolean = false;
+  fail: boolean = false;
   signInForm: FormGroup;
 
   constructor(private router: Router, private auth: AuthService) {
@@ -46,16 +48,25 @@ export class SigninComponent {
     this.loader = !this.loader;
 
     this.auth.signIn(Email, Password).then(() => {
-      this.loader = !this.loader;
-      this.router.navigate(["/user"]);
-    }).catch((err) => {
-      console.log(err);
-      this.loader = !this.loader;
-      this.signInForm.markAllAsTouched();
+      this.fail = false;
+      this.success = !this.success;
+      setTimeout(() => {
+        this.loader = !this.loader;
+        this.router.navigate(["/user"]);
+      }, 2000)
+    }).catch(() => {
+      this.fail = !this.fail;
+      setTimeout(() => {
+        this.loader = !this.loader;
+      }, 2000)
     })
   }
 
   goSignUp() {
-    this.auth.setPosition(true);
+    this.auth.setPosition('1');
+  }
+  
+  goResetPassword() {
+    this.auth.setPosition('2');
   }
 }

@@ -3,8 +3,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<section class="w-screen h-screen flex justify-between">
-    <app-singup></app-singup>
-    <app-singin></app-singin>
-    <div [ngClass]="{ 'left-full transform -translate-x-full' : screenDivide, 'left-0' : !screenDivide, }" class="absolute top-0 z-10 w-1/2 h-screen bg-green-600 transition-all duration-300"></div>
+<section [ngClass]="{ 'bg-green-600' : screenDivide === '2'}" class="absolute top-0 left-0 w-screen h-screen flex justify-between transition-all duration-300">
+    <app-singup [ngClass]="{ 
+        'opacity-100 pointer-events-auto' : screenDivide !== '2', 
+        'opacity-0 pointer-events-none' : screenDivide === '2'}" 
+        class="transition-all duration-300">
+    </app-singup>
+    <app-singin [ngClass]="{ 
+        'opacity-100 pointer-events-auto' : screenDivide !== '2',
+        'opacity-0 pointer-events-none' : screenDivide === '2'}" 
+        class="transition-all duration-300">
+    </app-singin>
+    <app-resetpassword [ngClass]="{ 
+        'opacity-100 pointer-events-auto' : screenDivide === '2', 
+        'opacity-0 pointer-events-none' : screenDivide !== '2'}" 
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 transition-all duration-300">
+    </app-resetpassword>
+    <div [ngClass]="{ 
+            'left-0 opacity-100' : screenDivide === '0', 
+            'left-full transform -translate-x-full opacity-100' : screenDivide === '1', 
+            'left-1/2 transform -translate-x-1/2 opacity-100 !bg-[#011222]' : screenDivide === '2'
+        }" 
+            class="bg-green-600 absolute top-0 z-10 w-1/2 h-screen transition-all duration-300">
+    </div>
 </section>

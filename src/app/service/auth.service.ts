@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private screenDivideControl = new BehaviorSubject<boolean>(false);
+  private screenDivideControl = new BehaviorSubject<string>('0');
   position$ = this.screenDivideControl.asObservable();
 
-  setPosition(position: boolean) {
+  setPosition(position: string) {
     this.screenDivideControl.next(position);
   }
 
@@ -24,6 +24,10 @@ export class AuthService {
     await updateProfile((userCredential.user), { displayName: username });
 
     return userCredential;
+  }
+
+  resetPassword(email: string) {
+    return sendPasswordResetEmail(this.auth, email);
   }
 
   signOut() {

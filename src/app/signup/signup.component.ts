@@ -23,6 +23,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
   loader: boolean = false;
+  success: boolean = false;
+  fail: boolean = false;
   signUpForm: FormGroup;
 
   constructor(private router: Router, private registration: AuthService) {
@@ -34,7 +36,7 @@ export class SignupComponent {
   }
 
   get UsernameError(): boolean {
-    return !!((this.signUpForm.get('Username')?.hasError('required') || this.signUpForm.get('Username')?.hasError('minlength')) && this.signUpForm.get('Email')?.touched);
+    return !!((this.signUpForm.get('Username')?.hasError('required') || this.signUpForm.get('Username')?.hasError('minlength')) && this.signUpForm.get('Username')?.touched);
   }
 
   get EmailError(): boolean {
@@ -56,16 +58,23 @@ export class SignupComponent {
     
     if (this.signUpForm.valid) {
       this.registration.signUp(Username, Email, Password).then(() => {
-        this.loader = !this.loader;
-        this.router.navigate(["/user"]);
+        this.fail = !this.fail;
+        this.success = !this.success;
+        setTimeout(() => {
+          this.loader = !this.loader;
+          this.router.navigate(["/user"]);
+        }, 2000)
       }).catch(() => {
-        this.loader = !this.loader;
-        this.signUpForm.markAllAsTouched();
+        this.fail = !this.fail;
+        setTimeout(() => {
+          this.loader = !this.loader;
+        }, 2000)
+       
       });
     }
   }
 
   goSignIn() {
-    this.registration.setPosition(false);
+    this.registration.setPosition('0');
   }
 }
