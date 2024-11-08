@@ -1,12 +1,41 @@
 <head>
-    <title>User</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Dashboard</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 
-<header class="fixed top-0 left-0 w-screen h-20 flex items-center justify-end box-border pr-12">
-    <div class="w-10 aspect-square rounded-full bg-white"></div>
-</header>
+<section class="w-screen h-screen flex bg-gray-100 dark:bg-gray-900">
+    <aside class="flex flex-col w-1/4 bg-gray-800 text-white dark:bg-gray-800 dark:text-gray-200 h-full p-4">
+        <header class="text-xl font-semibold mb-8 flex space-x-2">
+          <i class="fa-solid fa-house text-2xl"></i>
+          <span>Dashboard</span>
+        </header>
+      
+        <nav class="flex flex-col space-y-6">
+          <a href="#" class="flex items-center space-x-2 text-lg hover:text-gray-400 dark:hover:text-gray-400">
+            <i class="fa-solid fa-house text-xl"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="flex items-center space-x-2 text-lg hover:text-gray-400 dark:hover:text-gray-400">
+            <i class="fa-solid fa-user text-xl"></i>
+            <span>Profile</span>
+          </a>
+          <a href="#" class="flex items-center space-x-2 text-lg hover:text-gray-400 dark:hover:text-gray-400">
+            <i class="fa-solid fa-gear text-xl"></i>
+            <span>Settings</span>
+          </a>
+          <a href="#" class="flex items-center space-x-2 text-lg hover:text-gray-400 dark:hover:text-gray-400">
+            <i class="fa-solid fa-right-from-bracket text-xl"></i>
+            <span>Logout</span>
+          </a>
+        </nav>
+    </aside>
 
-<section class="w-screen h-screen flex items-center justify-center">
-    <button (click)="singOutUser()" class="px-5 py-2 rounded-lg bg-red-500">Log Out</button>
+    <app-admindashboard></app-admindashboard>
 </section>
+  

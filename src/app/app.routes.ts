@@ -11,7 +11,7 @@ export const routes: Routes = [
     },
 
     {
-        path: "user",
+        path: "dashboard",
         component: UserpageComponent,
     },
 

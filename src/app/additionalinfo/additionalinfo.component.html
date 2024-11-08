@@ -1,0 +1,61 @@
+<div class="relative w-[50vw] h-dvh md:h-scree flex flex-col items-center justify-center gap-y-3">
+    <form class="w-1/2 h-full flex flex-col justify-center gap-y-6 text-white" (ngSubmit)="addAdditionalInfo()" [formGroup]="additionalInfoFrom">
+        <h1 class="relative top-4 font-medium text-2xl">Additional Info</h1>
+        <div [ngClass]="{ 'border-red-500': nameError || fail, 'border-green-500': success }" class="relative border-2 h-11 flex items-center rounded-lg pr-3 focus-within:border-blue-500 group">
+            <div [ngClass]="{ 'border-red-500': nameError || fail, 'border-green-500': success }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2 group-focus-within:border-blue-500">
+                <i [ngClass]="{ 'text-green-500': success }" *ngIf="!nameError && !success && !fail" 
+                    class="fa-solid fa-user group-focus-within:text-blue-500"></i>
+                <i *ngIf="nameError"
+                    class="fa-solid fa-exclamation text-red-500 text-lg"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
+                <i *ngIf="fail"
+                    class="fa-solid fa-xmark text-red-500 text-lg"></i>
+            </div>
+            <input [ngClass]="{ 'text-green-500': success }" formControlName="Name" type="text" class="w-full p-1 bg-transparent outline-none" placeholder="Name">
+        </div>
+        <div [ngClass]="{ 'border-red-500': surnameError || fail, 'border-green-500': success }" class="relative border-2 h-11 flex items-center rounded-lg pr-3 focus-within:border-blue-500 group">
+            <div [ngClass]="{ 'border-red-500': surnameError || fail, 'border-green-500': success }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2 group-focus-within:border-blue-500">
+                <i [ngClass]="{ 'text-green-500': success }" *ngIf="!surnameError && !success && !fail" 
+                    class="fa-solid fa-envelope group-focus-within:text-blue-500"></i>
+                <i *ngIf="surnameError"
+                    class="fa-solid fa-exclamation text-red-500 text-lg"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
+                <i *ngIf="fail"
+                    class="fa-solid fa-xmark text-red-500 text-lg"></i>
+            </div>
+            <input [ngClass]="{ 'text-green-500': success }" formControlName="Surname" type="text" class="w-full p-1 bg-transparent outline-none" placeholder="Surname">
+        </div>
+        <div [ngClass]="{ 'border-red-500': birthdayError || fail, 'border-green-500': success }" class="relative border-2 h-11 flex items-center rounded-lg pr-3 focus-within:border-blue-500 group">
+            <div [ngClass]="{ 'border-red-500': birthdayError || fail, 'border-green-500': success }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2 group-focus-within:border-blue-500">
+                <i [ngClass]="{ 'text-green-500': success }" *ngIf="!birthdayError && !success && !fail" 
+                    class="fa-solid fa-lock group-focus-within:text-blue-500"></i>
+                <i *ngIf="birthdayError" 
+                    class="fa-solid fa-exclamation text-red-500 text-l"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
+                <i *ngIf="fail"
+                    class="fa-solid fa-xmark text-red-500 text-lg"></i>
+            </div>                
+            <input [ngClass]="{ 'text-green-500': success }" formControlName="Birthday" type="date" class="w-full p-1 bg-transparent outline-none" placeholder="Birthday">
+        </div>
+        <div [ngClass]="{ 'border-red-500': roleError || fail, 'border-green-500': success }" class="relative border-2 h-11 flex items-center rounded-lg pr-3 focus-within:border-blue-500 group">
+            <div [ngClass]="{ 'border-red-500': roleError || fail, 'border-green-500': success }" class="flex items-center justify-center mr-2 h-full w-11 text-center border-r-2 group-focus-within:border-blue-500">
+                <i [ngClass]="{ 'text-green-500': success }" *ngIf="!roleError && !success && !fail" 
+                    class="fa-solid fa-lock group-focus-within:text-blue-500"></i>
+                <i *ngIf="roleError" 
+                    class="fa-solid fa-exclamation text-red-500 text-l"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
+                <i *ngIf="fail"
+                    class="fa-solid fa-xmark text-red-500 text-lg"></i>
+            </div>                
+            <input [ngClass]="{ 'text-green-500': success }" formControlName="Role" type="range" class="w-full p-1 bg-transparent outline-none" placeholder="Role">
+        </div>
+        <div class="relative top-3 flex gap-x-4">
+            <button matRipple [matRippleColor]="'#1F293755'" type="button" class="w-full h-11 font-medium text-lg bg-gray-800 rounded-lg transition duration-300 md:hover:bg-gray-600" (click)="Cancel()">Cancel</button>
+            <button matRipple [matRippleColor]="'#3B82F655'" type="submit" class="w-full h-11 font-medium text-lg bg-blue-800 rounded-lg transition duration-300 md:hover:bg-blue-600"><span *ngIf="!loader">Add</span><span *ngIf="loader" class="loader text-lg"></span></button>
+        </div>
+    </form>
+</div>

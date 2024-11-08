@@ -10,7 +10,6 @@ import { AuthService } from '../service/auth.service';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    RouterLink,
     MatRipple,
     CommonModule
   ],
@@ -52,7 +51,7 @@ export class SigninComponent {
       this.success = !this.success;
       setTimeout(() => {
         this.loader = !this.loader;
-        this.router.navigate(["/user"]);
+        this.router.navigate(["/dashboard"]);
       }, 2000)
     }).catch(() => {
       this.fail = !this.fail;

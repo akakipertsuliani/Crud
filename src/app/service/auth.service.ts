@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
-import { BehaviorSubject } from 'rxjs';
+import { Auth, authState, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,9 @@ export class AuthService {
 
   signOut() {
     this.auth.signOut();
+  }
+
+  getUserData(): Observable<any> {
+    return authState(this.auth);
   }
 }

@@ -8,6 +8,8 @@
                     class="fa-solid fa-envelope group-focus-within:text-blue-500"></i>
                 <i *ngIf="EmailError"
                     class="fa-solid fa-exclamation text-red-500 text-lg"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
                 <i *ngIf="fail"
                     class="fa-solid fa-xmark text-red-500 text-lg"></i>
             </div>
@@ -19,6 +21,8 @@
                     class="fa-solid fa-lock group-focus-within:text-blue-500"></i>
                 <i *ngIf="passwordError" 
                     class="fa-solid fa-exclamation text-red-500 text-l"></i>
+                <i *ngIf="success"
+                    class="fa-solid fa-check text-green-500 text-lg"></i>
                 <i *ngIf="fail"
                     class="fa-solid fa-xmark text-red-500 text-lg"></i>
             </div>                

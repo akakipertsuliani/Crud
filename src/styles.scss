@@ -2,10 +2,10 @@
 
 @include mat.core();
 
-$crud-primary: mat.define-palette(mat.$indigo-palette);
-$crud-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$crud-primary: mat.define-palette(mat.$blue-palette);
+$crud-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 
-$crud-warn: mat.define-palette(mat.$red-palette);
+$crud-warn: mat.define-palette(mat.$blue-palette);
 
 $crud-theme: mat.define-light-theme((
   color: (

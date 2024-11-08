@@ -1,20 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 @Component({
   selector: 'app-userpage',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, AdmindashboardComponent],
   templateUrl: './userpage.component.html',
-  styleUrl: './userpage.component.scss'
+  styleUrl: './userpage.component.scss',
 })
 export class UserpageComponent {
-  constructor(private router: Router, private auth: AuthService) {}
-
-  singOutUser() {
-    this.auth.signOut();
-    this.router.navigate(["/"]);
-  }
-
 }
