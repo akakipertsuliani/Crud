@@ -1,0 +1,11 @@
+input[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        filter: invert(1);
+        // display: flex;
+        // justify-content: end;
+        // align-items: end;
+        // width: 100%;
+        // content: "";
+    }
+}
